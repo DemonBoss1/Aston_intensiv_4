@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LifecycleOwner
 import com.empire_mammoth.fragmentapplication.databinding.FragmentCBinding
@@ -22,6 +23,17 @@ class CFragment : Fragment() {
         dataModel.message.observe(activity as LifecycleOwner, {
 binding.textFromFragmentC.text = it
         })
+        binding.apply {
+            buttonFragmentCA.setOnClickListener {
+                parentFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+            }
+            buttonFragmentCD.setOnClickListener {
+                parentFragmentManager.beginTransaction()
+                    .replace(R.id.main, DFragment.newInstance())
+                    .addToBackStack("D Fragment")
+                    .commit()
+            }
+        }
 
         return binding.root
     }
