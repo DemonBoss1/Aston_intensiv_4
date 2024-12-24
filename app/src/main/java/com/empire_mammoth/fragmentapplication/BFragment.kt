@@ -17,6 +17,10 @@ class BFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentBBinding.inflate(inflater)
+
+        binding.buttonFragmentBA.setOnClickListener {
+            parentFragmentManager.popBackStack()
+        }
         return binding.root
     }
 
