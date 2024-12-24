@@ -21,6 +21,12 @@ class BFragment : Fragment() {
         binding.buttonFragmentBA.setOnClickListener {
             parentFragmentManager.popBackStack()
         }
+        binding.buttonFragmentBC.setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.main, CFragment.newInstance())
+                .addToBackStack("C Fragment")
+                .commit()
+        }
         return binding.root
     }
 
