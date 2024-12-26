@@ -1,4 +1,4 @@
-package com.empire_mammoth.fragmentapplication
+package com.empire_mammoth.fragmentapplication.first
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import com.empire_mammoth.fragmentapplication.R
 import com.empire_mammoth.fragmentapplication.databinding.FragmentBBinding
 
 

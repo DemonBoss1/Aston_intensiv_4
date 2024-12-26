@@ -1,13 +1,10 @@
-package com.empire_mammoth.fragmentapplication
+package com.empire_mammoth.fragmentapplication.first
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.empire_mammoth.fragmentapplication.R
 import com.empire_mammoth.fragmentapplication.databinding.ActivityFirstTaskBinding
-import com.empire_mammoth.fragmentapplication.databinding.ActivityMainBinding
 
 class FirstTaskActivity : AppCompatActivity() {
     private lateinit var binding: ActivityFirstTaskBinding

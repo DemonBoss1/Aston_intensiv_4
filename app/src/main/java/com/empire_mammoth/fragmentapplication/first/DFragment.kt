@@ -1,4 +1,4 @@
-package com.empire_mammoth.fragmentapplication
+package com.empire_mammoth.fragmentapplication.first
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

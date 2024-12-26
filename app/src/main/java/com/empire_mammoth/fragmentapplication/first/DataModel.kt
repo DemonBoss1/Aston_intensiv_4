@@ -1,4 +1,4 @@
-package com.empire_mammoth.fragmentapplication
+package com.empire_mammoth.fragmentapplication.first
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

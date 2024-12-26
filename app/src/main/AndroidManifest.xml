@@ -13,7 +13,10 @@
         android:theme="@style/Theme.FragmentApplication"
         tools:targetApi="31">
         <activity
-            android:name=".FirstTaskActivity"
+            android:name=".second.SecondActivity"
+            android:exported="false" />
+        <activity
+            android:name=".first.FirstTaskActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
