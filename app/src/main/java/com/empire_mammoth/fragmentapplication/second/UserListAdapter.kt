@@ -17,17 +17,17 @@ class UserListAdapter(
             LastName = "Яльцева",
             Phone = "+7 980 728 92 28",
             url = "https://images.generated.photos/Cijh8wBZjguImTM0OI3Cm_FwAsY3GPbJloy5cYD6cxU/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92Ml8w/MTE0NDk5LmpwZw.jpg"
-        ),User(
+        ), User(
             FirstName = "Гавриил",
             LastName = "Карюгин",
             Phone = "+7 959 506 10 66",
             url = "https://images.generated.photos/avok3aH8Fvqde6mYQZW8p4aORYP_7W9W7aCBxkA5tI8/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/ODkyMTUyLmpwZw.jpg"
-        ),User(
+        ), User(
             FirstName = "Антон",
             LastName = "Зиновьев",
             Phone = "+7 926 885 36 39",
             url = "https://images.generated.photos/Z9tbjjPVUVuBP5R0wYxOwhplq1ZNa3jThQ3EQjfh4lY/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MjkwMTU4LmpwZw.jpg"
-        ),User(
+        ), User(
             FirstName = "Валений",
             LastName = "Новоселов",
             Phone = "+7 999 872 47 88",
@@ -35,9 +35,13 @@ class UserListAdapter(
         )
     )
 
-    class UserItemHolder(private val binding: UserItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    class UserItemHolder(
+        private val binding: UserItemBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
+        var userInfo: User? = null
 
         fun bind(user: User) = with(binding) {
+            userInfo = user
             val fullName = user.FirstName + " " + user.LastName
             textViewName.text = fullName
             textViewPhone.text = user.Phone

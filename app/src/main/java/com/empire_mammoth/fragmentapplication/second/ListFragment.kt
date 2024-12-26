@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.fragment.app.setFragmentResult
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.empire_mammoth.fragmentapplication.R
 import com.empire_mammoth.fragmentapplication.databinding.FragmentListBinding
@@ -23,6 +25,12 @@ class ListFragment : Fragment() {
             recyclerList.layoutManager = LinearLayoutManager(activity)
             recyclerList.adapter = UserListAdapter(object : UserListAdapterListener {
                 override fun onClickItem(holder: UserListAdapter.UserItemHolder) {
+                    setFragmentResult(UserInfoRequest, bundleOf(
+                        "FirstName" to (holder.userInfo?.FirstName),
+                        "LastName" to (holder.userInfo?.LastName),
+                        "Phone" to (holder.userInfo?.Phone)
+                    ))
+
                     parentFragmentManager.beginTransaction()
                         .replace(R.id.main, UserInfoFragment.newInstance())
                         .addToBackStack("UserInfoFragment")
