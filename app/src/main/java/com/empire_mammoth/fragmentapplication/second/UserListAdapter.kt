@@ -24,7 +24,7 @@ class UserListAdapter(
             textViewName.text = fullName
             textViewPhone.text = user.phone
             Picasso.get()
-                .load(user.url)
+                .load(user.path)
                 .into(userAvatar)
         }
 

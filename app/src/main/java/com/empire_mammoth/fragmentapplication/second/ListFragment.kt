@@ -27,22 +27,22 @@ class ListFragment : Fragment() {
             firstName = "Галина",
             lastName = "Яльцева",
             phone = "+7 980 728 92 28",
-            url = "https://images.generated.photos/Cijh8wBZjguImTM0OI3Cm_FwAsY3GPbJloy5cYD6cxU/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92Ml8w/MTE0NDk5LmpwZw.jpg"
+            path = "https://images.generated.photos/Cijh8wBZjguImTM0OI3Cm_FwAsY3GPbJloy5cYD6cxU/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92Ml8w/MTE0NDk5LmpwZw.jpg"
         ), User(
             firstName = "Гавриил",
             lastName = "Карюгин",
             phone = "+7 959 506 10 66",
-            url = "https://images.generated.photos/avok3aH8Fvqde6mYQZW8p4aORYP_7W9W7aCBxkA5tI8/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/ODkyMTUyLmpwZw.jpg"
+            path = "https://images.generated.photos/avok3aH8Fvqde6mYQZW8p4aORYP_7W9W7aCBxkA5tI8/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/ODkyMTUyLmpwZw.jpg"
         ), User(
             firstName = "Антон",
             lastName = "Зиновьев",
             phone = "+7 926 885 36 39",
-            url = "https://images.generated.photos/Z9tbjjPVUVuBP5R0wYxOwhplq1ZNa3jThQ3EQjfh4lY/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MjkwMTU4LmpwZw.jpg"
+            path = "https://images.generated.photos/Z9tbjjPVUVuBP5R0wYxOwhplq1ZNa3jThQ3EQjfh4lY/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MjkwMTU4LmpwZw.jpg"
         ), User(
             firstName = "Валерий",
             lastName = "Новоселов",
             phone = "+7 999 872 47 88",
-            url = "https://images.generated.photos/iQqc4KpqOQPDgOpaNLeQgUSzg3tEPxhKEkFziO-v8l8/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MTkzODQ3LmpwZw.jpg"
+            path = "https://images.generated.photos/iQqc4KpqOQPDgOpaNLeQgUSzg3tEPxhKEkFziO-v8l8/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MTkzODQ3LmpwZw.jpg"
         )
     )
 
@@ -77,7 +77,8 @@ class ListFragment : Fragment() {
                             "Id" to (holder.id),
                             "FirstName" to (holder.userInfo?.firstName),
                             "LastName" to (holder.userInfo?.lastName),
-                            "Phone" to (holder.userInfo?.phone)
+                            "Phone" to (holder.userInfo?.phone),
+                            "Path" to (holder.userInfo?.path)
                         )
                     )
 
