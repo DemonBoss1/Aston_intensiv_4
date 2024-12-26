@@ -1,23 +1,28 @@
 package com.empire_mammoth.fragmentapplication.second
 
+import android.content.Context.MODE_PRIVATE
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.setFragmentResultListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.empire_mammoth.fragmentapplication.R
 import com.empire_mammoth.fragmentapplication.databinding.FragmentListBinding
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import java.lang.reflect.Type
+
 
 const val ListFragmentRequest = "ListFragmentRequest"
 
 class ListFragment : Fragment() {
     private lateinit var binding: FragmentListBinding
 
-    private val userList = listOf(
+    private var userList = listOf(
         User(
             firstName = "Галина",
             lastName = "Яльцева",
@@ -46,6 +51,8 @@ class ListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentListBinding.inflate(inflater)
+
+        loadData()
 
         setFragmentResultListener(ListFragmentRequest) { _, bundle ->
 
@@ -84,6 +91,30 @@ class ListFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    override fun onStop() {
+        super.onStop()
+        saveData()
+    }
+
+    private fun saveData() {
+        val sharedPreferences = activity?.getSharedPreferences("Save", MODE_PRIVATE)
+        val editor = sharedPreferences?.edit()
+        val gson = Gson()
+        val list = ArrayList(userList)
+        val json = gson.toJson(list)
+        editor?.putString("List", json)
+        editor?.apply()
+    }
+
+    private fun loadData() {
+        val sharedPreferences = activity?.getSharedPreferences("Save", MODE_PRIVATE)
+        val gson = Gson()
+        val json = sharedPreferences?.getString("List", null)
+        val type: Type = object : TypeToken<ArrayList<User?>?>() {}.type
+        val list:ArrayList<User>? = gson.fromJson<Any>(json, type) as ArrayList<User>?
+        if (list != null) userList = list.toList()
     }
 
     companion object {
