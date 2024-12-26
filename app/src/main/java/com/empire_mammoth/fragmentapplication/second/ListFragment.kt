@@ -7,10 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
+import androidx.fragment.app.setFragmentResultListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.empire_mammoth.fragmentapplication.R
 import com.empire_mammoth.fragmentapplication.databinding.FragmentListBinding
 
+const val ListFragmentRequest = "ListFragmentRequest"
 
 class ListFragment : Fragment() {
     private lateinit var binding: FragmentListBinding
@@ -32,7 +34,7 @@ class ListFragment : Fragment() {
             phone = "+7 926 885 36 39",
             url = "https://images.generated.photos/Z9tbjjPVUVuBP5R0wYxOwhplq1ZNa3jThQ3EQjfh4lY/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MjkwMTU4LmpwZw.jpg"
         ), User(
-            firstName = "Валений",
+            firstName = "Валерий",
             lastName = "Новоселов",
             phone = "+7 999 872 47 88",
             url = "https://images.generated.photos/iQqc4KpqOQPDgOpaNLeQgUSzg3tEPxhKEkFziO-v8l8/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MTkzODQ3LmpwZw.jpg"
@@ -45,16 +47,32 @@ class ListFragment : Fragment() {
     ): View {
         binding = FragmentListBinding.inflate(inflater)
 
+        setFragmentResultListener(ListFragmentRequest) { _, bundle ->
+
+            val id = bundle.getInt("Id")
+            val firstName = bundle.getString("FirstName")
+            val lastName = bundle.getString("LastName")
+            val phone = bundle.getString("Phone")
+
+            if (firstName != null && lastName != null && phone != null) {
+                userList[id].firstName = firstName
+                userList[id].lastName = lastName
+                userList[id].phone = phone
+            }
+        }
+
         binding.apply {
             recyclerList.layoutManager = LinearLayoutManager(activity)
             recyclerList.adapter = UserListAdapter(userList, object : UserListAdapterListener {
                 override fun onClickItem(holder: UserListAdapter.UserItemHolder) {
-                    setFragmentResult(UserInfoRequest, bundleOf(
-                        "Id" to (holder.id),
-                        "FirstName" to (holder.userInfo?.firstName),
-                        "LastName" to (holder.userInfo?.lastName),
-                        "Phone" to (holder.userInfo?.phone)
-                    ))
+                    setFragmentResult(
+                        UserInfoRequest, bundleOf(
+                            "Id" to (holder.id),
+                            "FirstName" to (holder.userInfo?.firstName),
+                            "LastName" to (holder.userInfo?.lastName),
+                            "Phone" to (holder.userInfo?.phone)
+                        )
+                    )
 
                     parentFragmentManager.beginTransaction()
                         .replace(R.id.main, UserInfoFragment.newInstance())

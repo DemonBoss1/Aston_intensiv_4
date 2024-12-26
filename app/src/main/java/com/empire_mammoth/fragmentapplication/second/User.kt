@@ -1,8 +1,8 @@
 package com.empire_mammoth.fragmentapplication.second
 
 data class User(
-    val firstName: String,
-    val lastName: String,
-    val phone: String,
+    var firstName: String,
+    var lastName: String,
+    var phone: String,
     val url: String
 )

@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.setFragmentResultListener
 import com.empire_mammoth.fragmentapplication.databinding.FragmentUserInfoBinding
 
@@ -38,7 +40,24 @@ class UserInfoFragment : Fragment() {
 
         }
 
+        binding.apply {
+            applyButton.setOnClickListener {
+                firstName = editTextFirstName.text.toString()
+                lastName = editTextTextLastName.text.toString()
+                phone = editTextTextPhone.text.toString()
 
+                setFragmentResult(
+                    ListFragmentRequest, bundleOf(
+                        "Id" to (id),
+                        "FirstName" to (firstName),
+                        "LastName" to (lastName),
+                        "Phone" to (phone)
+                    )
+                )
+
+                parentFragmentManager.popBackStack()
+            }
+        }
 
         return binding.root
     }
