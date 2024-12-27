@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace = "com.empire_mammoth.fragmentapplication"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.empire_mammoth.fragmentapplication"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -39,6 +39,9 @@ android {
 }
 
 dependencies {
+    implementation("androidx.fragment:fragment-ktx:1.8.5")
+    implementation("com.squareup.picasso:picasso:2.8")
+    implementation ("com.google.code.gson:gson:2.8.5")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
